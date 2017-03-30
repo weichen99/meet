@@ -1,0 +1,31 @@
+body{
+    background: white url("images/background.png");
+}
+
+.navbar-custom {
+    color: #FFFFFF;
+    background-color: transparent;
+}
+
+.navbar{
+    border-radius: 0;
+}
+
+.navbar-brand{
+    font-family: 'Jim Nightshade', cursive;
+    font-size: 32px;
+}
+
+.glyphicon-star{
+    color: #CCCCCC;
+    font-size: 16px;
+}
+
+.glyphicon-star-active{
+    color: #FFD700;
+    font-size: 16px;
+}
+
+.all-trips-header{
+    font-family: 'Nova Oval', cursive;
+}

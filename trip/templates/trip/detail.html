@@ -1,0 +1,21 @@
+{% extends 'trip/base.html' %}
+{% block title %}{{ trip.destination }}{% endblock %}
+{% block trips_active %}active{% endblock %}
+
+{% block body %}
+
+<div class="container-fluid songs-container">
+    <div class="row">
+        <div class="col-sm-4 col-md-3">
+            <div class="panel panel-default">
+                <div class="panel-body text-center">
+                    <h1 >{{ trip.destination }} </h1><br>
+                    <h4>{{ trip.profile_set.count|add:1}} attending</h4>
+                    <h2><small>Host: {{ trip.host }}</small></h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

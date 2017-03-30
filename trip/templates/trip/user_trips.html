@@ -1,0 +1,51 @@
+{% extends 'trip/base.html' %}
+{% block trips_active %}active{% endblock %}
+
+
+{% block body %}
+<div class="trips-container container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <h1 class="all-trips-header">Upcoming Trips</h1><br>
+        </div>
+        {% if trips %}
+            {% for trip in trips %}
+                <div class="col-sm-4 col-lg-2" >
+                    <div class="thumbnail" >
+                        <a href="{% url 'trip:detail' trip.id %}">
+                           <!-- map here -->
+                        </a>
+                        <div class="caption">
+                            <h1>{{ trip.destination }}</h1>
+                            <h4>{{ trip.profile_set.count|add:1}} attending</h4>
+                            <h5>Host: {{ trip.host }}</h5>
+                            <!-- View Details -->
+                            <a href="{% url 'trip:detail' trip.id %}" class="btn btn-primary btn-sm" role="button">Details</a>
+
+                            <a href="{% url 'trip:attend_trip' trip.id %}" class="btn btn-default btn-sm btn-favorite" role="button">
+                                {% csrf_token %}
+                                {% if trip in user.profile.trips.all %}
+                                    <span class="glyphicon glyphicon-star" style="color:#FFD700"></span>
+                                {% else %}
+                                    <span class="glyphicon glyphicon-star"></span>
+                                {% endif %}
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+                {% cycle '' '' '' '' '' '<div class="clearfix visible-lg"></div>' %}
+            {% endfor %}
+        {% else %}
+            <div class="col-sm-12">
+                <br>
+                <a href="{% url 'trip:trip_add' %}">
+                    <button type="button" class="btn btn-success">
+                        <span class="glyphicon glyphicon-plus"></span>&nbsp; Create a Trip
+                    </button>
+                </a>
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
