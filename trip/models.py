@@ -27,6 +27,7 @@ def save_user_profile(sender, instance, **kwargs):
 class Trip(models.Model):
     host = models.ForeignKey(Profile, on_delete=models.CASCADE)
     destination = models.CharField(max_length=100)
+    trip_date = models.DateField(auto_now_add=False,auto_now=False)
 
     def __str__(self):
         return 'Trip to ' + self.destination
